@@ -2,23 +2,36 @@ import React, { useState } from 'react';
 import DisplayEntries from './Components/Display Entries/DisplayEntries';
 import AddEntryForm from './Components/AddEntry/AddEntryForm';
 import EntriesChartTracker from './Components/EntriesChartTracker/EntriesChartTracker';
+import './Apps.css';
 
 function App() {
 
-const[entries, setEntries] = useState([{weight: 175, date: '11-23-2021'}, {weight: 176, date: '11-24-2021'}])
+  const[entries, setEntries] = useState([{weight: 175, date: '11-23-2021'}, {weight: 176, date: '11-24-2021'}])
+  
+  function addNewEntry(entry){
 
-function addNewEntry(entry){
+    let tempEntries = [...entries, entry];
 
-  let tempEntries = [...entries, entry];
+    setEntries(tempEntries);
+  }
 
-  setEntries(tempEntries);
-}
+
 
   return (
-    <div>
-      <DisplayEntries parentEntries={entries} />
-      <AddEntryForm addNewEntryProperty={addNewEntry}/>
-      <EntriesChartTracker parentEntries= {entries}/>
+   <div className = 'container-fluid'>
+      <div className= 'row'>
+        <div clasName = 'col-md-6'>
+          <div className = 'border-box'>
+            <DisplayEntries parentEntries={entries} />
+            <AddEntryForm addNewEntryProperty={addNewEntry}/>
+        </div>
+      </div>
+        <div clasName = 'col-md-6'>
+          <div className='border-box'>
+            <EntriesChartTracker parentEntries= {entries}/>
+          </div>
+        </div>      
+      </div>
     </div>
   );
 }
