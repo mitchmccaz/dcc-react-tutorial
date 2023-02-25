@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './AddEntryForm.css';
 
 const AddEntryForm = (props) => {
 
@@ -17,7 +17,7 @@ const AddEntryForm = (props) => {
     }
     
     return ( 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='form-grid'>
             <div className = 'form-group'>
                 <label>Weight</label>
                 <input type='number' className="form-control" value = {weight} onChange ={(event)=> setWeight(parseFloat(event.target.value))}/>
